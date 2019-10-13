@@ -4,6 +4,8 @@ from flask import Flask
 
 from flask import request
 
+from flask import render_template
+
 def create_app(test_configuration=None):
 	app=Flask(__name__, instance_relative_config=True)
 
@@ -36,8 +38,8 @@ def create_app(test_configuration=None):
 		print('----------')
 		
 		person_todo_list=get_todos_by_name(name)
-		return todo_view(person_todo_list)
-
+		#return todo_view(person_todo_list)
+		return render_template('todo_view.html',todos=person_todo_list)	#filename, variable		#jinja templating
 
 	# @app.route('/shivang')	#linking to function
 	# def shivang():
